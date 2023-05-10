@@ -22,7 +22,8 @@ To use the FinTrack App, simply follow these steps:
 1. Create an account or log in with your existing account.
 2. <u>New Page</u>: Record your income and expenses by entering the amount, date, and category.
 3. <u>Dashboard Page</u>: Get a quick overview of your finances and the visualizations to identify areas where you can improve.
-4. <u>View Page</u>: Use the search and filter functionality to find specific transactions based on criteria such as date or category.
+4. <u>View Page</u>: Use the search and filter functionality to find specific entries based on criteria such as date or category.
+5. <u>Entry Page</u>: Edit or delete a specific entry.
 
 ## Built with
 
