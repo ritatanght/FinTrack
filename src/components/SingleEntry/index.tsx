@@ -1,11 +1,12 @@
 import { CgArrowLeft } from "react-icons/cg";
 import { RiEditBoxLine, RiDeleteBinLine } from "react-icons/ri";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
-import { momentParseDate } from "../utils";
-import { getEntry, deleteEntry } from "../firebase/api";
+import { momentParseDate } from "../../utils";
+import { getEntry, deleteEntry } from "../../firebase/api";
 import { useState, useEffect } from "react";
-import { Entry } from "../types";
+import { Entry } from "../../types";
 import PulseLoader from "react-spinners/PulseLoader";
+import Modal from "./Modal";
 
 interface RemoveFunc {
   removeFromList: (id: string) => void;
@@ -16,6 +17,7 @@ const SingleEntry: React.FC<RemoveFunc> = ({ removeFromList }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [entry, setEntry] = useState<Entry | null | undefined>(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -27,11 +29,9 @@ const SingleEntry: React.FC<RemoveFunc> = ({ removeFromList }) => {
     navigate("/add", { state: { ...entry, date: entry?.date.toDate() } });
 
   const handleDelete = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this entry?")) {
-      await deleteEntry(id);
-      removeFromList(id);
-      navigate("/");
-    }
+    await deleteEntry(id);
+    removeFromList(id);
+    navigate("/");
   };
 
   const search = location.state?.search ? `?${location.state.search}` : "";
@@ -57,6 +57,12 @@ const SingleEntry: React.FC<RemoveFunc> = ({ removeFromList }) => {
 
   return (
     <main className="entry-page">
+      {showAlert && (
+        <Modal
+          setShowAlert={setShowAlert}
+          handleDelete={() => handleDelete(entry.id)}
+        />
+      )}
       <Link to={`..${search}`} relative="path" className="return btn">
         <CgArrowLeft /> Return
       </Link>
@@ -92,7 +98,7 @@ const SingleEntry: React.FC<RemoveFunc> = ({ removeFromList }) => {
             <RiEditBoxLine />
             Edit
           </button>
-          <button className="delete-btn" onClick={() => handleDelete(entry.id)}>
+          <button className="delete-btn" onClick={() => setShowAlert(true)}>
             <RiDeleteBinLine />
             Delete
           </button>

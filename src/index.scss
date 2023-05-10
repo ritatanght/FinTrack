@@ -360,6 +360,37 @@ header {
     }
   }
 }
+.modal {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  .modal__content {
+    padding: 1.5em 1em;
+    border-radius: 5px;
+    background: white;
+    min-height: 120px;
+    @include flex(space-between, center);
+    flex-direction: column;
+    p {
+      font-weight: bold;
+    }
+    .modal__btn {
+      text-transform: uppercase;
+      &.confirm {
+        background: $clr-white;
+        color: $clr-red;
+        margin-right: 1em;
+        &:hover {
+          background: $clr-red;
+          color: $clr-white;
+        }
+      }
+    }
+  }
+}
 
 @media (min-width: 550px) {
   .entries {
@@ -545,6 +576,9 @@ form {
     transition: $std-transition;
     grid-column: span 2;
   }
+  input[type="date"] {
+    font-size: 1.2rem;
+  }
 
   .toggle {
     padding: 0;
@@ -640,11 +674,6 @@ form {
         margin-top: 0px;
       }
 
-      input[type="date"] {
-        font-size: 1.2rem;
-        display: grid;
-        justify-content: center;
-      }
       .toggle {
         overflow: hidden;
         .toggle-input {
