@@ -1,10 +1,22 @@
 # FinTrack :dollar:
 
-FinTrack is an easy-to-use application designed to help you monitor your finances. It lets you categorize your expenses and income, so that you can keep track of your spending and earnings in an organized manner.
+FinTrack is an expense and income tracking app designed to help users effectively oversee their financial activities and spending habits. It lets you categorize your expenses and income, so that you can keep track of your spending and earnings in an organized manner.
 
 - [Live Demo Here](https://fintrack-live.web.app/)
 
+## Screenshots
+Dashboard<br/>
 <img src="./public/fintrack-screenshot.png" width="600">
+
+Create entry (mobile design)<br/>
+<img src="./public/fintrack-create-entry.png" width="300">
+
+View single entry (mobile design)<br/>
+<img src="./public/fintrack-single-entry.png" width="300">
+
+View all/ filter entries (mobile design)<br/>
+<img src="./public/fintrack-view-entries.png" width="300">
+
 
 ## Features
 
